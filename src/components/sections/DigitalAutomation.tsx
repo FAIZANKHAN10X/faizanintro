@@ -2,64 +2,55 @@
 
 import { Section } from "@/components/layout/Section";
 import { motion } from "framer-motion";
-import {
-  Workflow,
-  Cpu,
-  Layers,
-  BarChart3,
-  Bot,
-  LucideIcon,
-} from "lucide-react";
+import { Workflow, Cpu, Layers, BarChart3, Bot } from "lucide-react";
 
 // --- Types ---
 interface ProjectData {
+  id: string;
   title: string;
   description: string;
   icon: React.ReactNode;
   stack: string[];
-  metric: string;
 }
 
 const automationProjects: ProjectData[] = [
   {
+    id: "SYS_01",
     title: "Autonomous CMS Core",
     description:
-      "Architected a performance-first CMS ecosystem focused on Core Web Vitals and zero-latency rendering.",
-    icon: <Layers className="w-5 h-5 text-purple-400" />,
+      "Zero-latency rendering ecosystem optimized for Core Web Vitals.",
+    icon: <Layers className="w-5 h-5" />,
     stack: ["Next.js", "Vercel", "Sanity"],
-    metric: "99/100 Perf",
   },
   {
-    title: "Meta Ads Orchestration",
+    id: "SYS_02",
+    title: "Meta Ads Logic",
     description:
-      "Programmatic ad-scaling system using structured audience targeting algorithms.",
-    icon: <BarChart3 className="w-5 h-5 text-blue-400" />,
-    stack: ["Meta API", "Pixel", "Python"],
-    metric: "3x ROAS",
+      "Programmatic scaling algorithms with automated audience segmentation.",
+    icon: <BarChart3 className="w-5 h-5" />,
+    stack: ["Meta API", "Python", "Pixel"],
   },
   {
-    title: "CRM Logic Pipelines",
-    description:
-      "Designed multi-stage lead intake workflows with automated scoring and routing.",
-    icon: <Workflow className="w-5 h-5 text-green-400" />,
+    id: "SYS_03",
+    title: "CRM Pipelines",
+    description: "Multi-stage lead intake workflows with automated scoring.",
+    icon: <Workflow className="w-5 h-5" />,
     stack: ["HubSpot", "Zapier", "SQL"],
-    metric: "Automated",
   },
   {
-    title: "n8n Agent Swarm",
+    id: "SYS_04",
+    title: "Agent Swarm",
     description:
-      "Deployed self-hosting n8n workflows for cross-platform synchronization.",
-    icon: <Cpu className="w-5 h-5 text-amber-400" />,
+      "Self-hosted n8n worker nodes for cross-platform synchronization.",
+    icon: <Cpu className="w-5 h-5" />,
     stack: ["n8n", "Docker", "Webhooks"],
-    metric: "Self-Hosted",
   },
   {
-    title: "AI Sales Summarizer",
-    description:
-      "Integrated LLMs to transcribe calls, extract action items, and auto-draft follow-ups.",
-    icon: <Bot className="w-5 h-5 text-pink-400" />,
-    stack: ["OpenAI", "Whisper", "Edge Fn"],
-    metric: "Time Saved",
+    id: "SYS_05",
+    title: "Sales Intelligence",
+    description: "LLM-based call transcription and action-item extraction.",
+    icon: <Bot className="w-5 h-5" />,
+    stack: ["OpenAI", "Whisper", "Edge"],
   },
 ];
 
@@ -67,43 +58,37 @@ export function DigitalAutomation() {
   return (
     <Section
       id="digital-automation"
-      className="bg-neutral-950 py-24 md:py-32 overflow-hidden"
+      className="bg-black py-24 md:py-32 overflow-hidden border-t border-white/5"
     >
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12 relative">
-        {/* Background Grid (Blueprint Look) */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.03]"
-          style={{
-            backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
-            backgroundSize: "24px 24px",
-          }}
-        />
+        {/* --- Header: Aligned with 'Luxury Architect' Theme --- */}
+        <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-20 md:mb-24 border-b border-neutral-800/50 pb-8">
+          <div className="space-y-4 max-w-2xl">
+            <h2 className="text-4xl md:text-6xl font-serif text-neutral-100 tracking-tight">
+              System{" "}
+              <span className="italic text-neutral-500">Architecture</span>
+            </h2>
+            <p className="text-neutral-400 text-sm font-mono leading-relaxed max-w-lg">
+              Designing the invisible logic that powers scalable enterprises.
+              Focusing on modularity, uptime, and automated execution.
+            </p>
+          </div>
 
-        {/* Header */}
-        <div className="mb-16 md:mb-24 space-y-4 relative z-10">
-          <h2 className="text-3xl md:text-5xl font-serif text-neutral-100">
-            System Architecture
-          </h2>
-          <p className="text-neutral-500 max-w-xl text-lg">
-            Designing the invisible logic that powers scalable enterprises.
-          </p>
+          {/* Status Indicator */}
+          <div className="flex items-center gap-3 font-mono text-xs text-neutral-500 uppercase tracking-widest">
+            <div className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+            </div>
+            <span>Workflow_Active</span>
+          </div>
         </div>
 
-        {/* Workflow Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 relative z-10">
+        {/* --- Grid: Technical Nodes --- */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
           {automationProjects.map((project, index) => (
             <BlueprintCard key={index} data={project} index={index} />
           ))}
-
-          {/* Connector Decoration (Visual only) */}
-          <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none hidden lg:block opacity-20">
-            <path
-              d="M 300 100 Q 500 100 600 300"
-              stroke="white"
-              fill="none"
-              strokeDasharray="5,5"
-            />
-          </svg>
         </div>
       </div>
     </Section>
@@ -118,38 +103,40 @@ function BlueprintCard({ data, index }: { data: ProjectData; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className="group relative bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-neutral-600 transition-colors duration-300 flex flex-col justify-between h-full min-h-70"
+      className="group relative bg-neutral-900/20 border border-white/5 hover:border-amber-500/30 transition-all duration-500 flex flex-col justify-between h-full min-h-70"
     >
-      {/* Node Input Handle (Visual) */}
-      <div className="absolute -left-1.25 top-8 w-2.5 h-2.5 bg-neutral-800 border border-neutral-600 rounded-full group-hover:bg-amber-400 transition-colors" />
+      {/* Node Input Handle (Visual - represents data flowing IN) */}
+      <div className="absolute -left-1.25 top-12 w-2.25 h-2.25 bg-black border border-neutral-700 rounded-full group-hover:bg-amber-400 group-hover:border-amber-400 transition-colors z-20" />
 
-      {/* Top Section */}
-      <div className="space-y-4">
+      <div className="p-8 space-y-6">
+        {/* Top: Icon + System ID */}
         <div className="flex justify-between items-start">
-          <div className="p-3 bg-neutral-800/80 rounded-lg border border-white/5 group-hover:border-white/10 transition-colors">
+          <div className="p-3 bg-white/5 rounded-full text-amber-200/80 group-hover:text-amber-200 group-hover:bg-amber-500/10 transition-colors">
             {data.icon}
           </div>
-          <span className="text-xs font-mono text-neutral-500 bg-neutral-900 border border-neutral-800 px-2 py-1 rounded">
-            {data.metric}
+          <span className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest group-hover:text-neutral-400 transition-colors">
+            {data.id}
           </span>
         </div>
 
-        <h3 className="text-xl font-medium text-neutral-200 group-hover:text-white transition-colors">
-          {data.title}
-        </h3>
-
-        <p className="text-sm text-neutral-400 leading-relaxed">
-          {data.description}
-        </p>
+        {/* Content */}
+        <div>
+          <h3 className="text-xl font-serif text-neutral-200 group-hover:text-white transition-colors mb-3">
+            {data.title}
+          </h3>
+          <p className="text-sm text-neutral-500 leading-relaxed font-mono">
+            {data.description}
+          </p>
+        </div>
       </div>
 
-      {/* Bottom Section: Stack */}
-      <div className="pt-6 mt-6 border-t border-neutral-800/50">
-        <div className="flex flex-wrap gap-2">
-          {data.stack.map((tech: string, i: number) => (
+      {/* Bottom: Tech Stack */}
+      <div className="px-8 pb-8 pt-0">
+        <div className="flex flex-wrap gap-x-4 gap-y-2 border-t border-white/5 pt-4">
+          {data.stack.map((tech, i) => (
             <span
               key={i}
-              className="text-[10px] uppercase tracking-wider font-semibold text-neutral-500 bg-neutral-950 px-2 py-1 rounded border border-neutral-800/50"
+              className="text-[10px] uppercase tracking-wider text-neutral-600 group-hover:text-neutral-400 transition-colors"
             >
               {tech}
             </span>
@@ -157,8 +144,8 @@ function BlueprintCard({ data, index }: { data: ProjectData; index: number }) {
         </div>
       </div>
 
-      {/* Node Output Handle (Visual) */}
-      <div className="absolute -right-1.25 bottom-8 w-2.5 h-2.5 bg-neutral-800 border border-neutral-600 rounded-full group-hover:bg-amber-400 transition-colors" />
+      {/* Node Output Handle (Visual - represents data flowing OUT) */}
+      <div className="absolute -right-1.25 bottom-12 w-2.25 h-2.25 bg-black border border-neutral-700 rounded-full group-hover:bg-amber-400 group-hover:border-amber-400 transition-colors z-20" />
     </motion.div>
   );
 }
