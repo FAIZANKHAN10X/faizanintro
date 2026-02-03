@@ -126,14 +126,14 @@ export function Hero() {
             className="flex flex-wrap gap-4 pt-6"
           >
             <Link
-              href="#contact"
+              href="#communication"
               className="px-8 py-3 bg-neutral-100 text-black font-mono text-xs md:text-sm uppercase tracking-wider font-bold hover:bg-white transition-colors"
             >
               Initiate Project
             </Link>
 
             <Link
-              href="/projects"
+              href="#digital-automation"
               className="px-8 py-3 border border-white/10 text-neutral-300 font-mono text-xs md:text-sm uppercase tracking-wider hover:bg-white/5 hover:text-white transition-colors"
             >
               System Logs

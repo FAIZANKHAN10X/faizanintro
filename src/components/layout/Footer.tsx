@@ -124,9 +124,9 @@ export function Footer() {
               Sitemap
             </h4>
             <div className="flex flex-col gap-1">
-              <SocialLink href="#experience" label="Experience" />
-              <SocialLink href="#capabilities" label="Capabilities" />
-              <SocialLink href="#lab" label="Digital Lab" />
+              <SocialLink href="#professional-experience" label="Experience" />
+              <SocialLink href="#core-competencies" label="Capabilities" />
+              <SocialLink href="#digital-automation" label="Digital Lab" />
               <SocialLink href="/journal" label="Journal" />
             </div>
           </div>

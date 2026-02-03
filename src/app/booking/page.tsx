@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Book a Strategy Call",
+  description:
+    "Book a strategy call to discuss digital systems, automation architecture, and operational optimization.",
+  alternates: { canonical: "/booking" },
+};
 
 export default function BookingPage() {
   return (
