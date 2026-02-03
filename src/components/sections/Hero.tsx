@@ -1,9 +1,10 @@
+// src/components/sections/Hero.tsx
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
+import { TrackedLink } from "@/components/TrackedLink";
 
 // --- Utility: Ultra-Performant Text Reveal ---
 // Replaces expensive Blur with simple Clip-Path (GPU friendly)
@@ -16,7 +17,7 @@ const RevealText = ({
   delay?: number;
   className?: string;
 }) => (
-  <div className={`overflow-hidden ${className}`}>
+  <div className={`overflow-hidden ${className || ""}`}>
     <motion.div
       initial={{ y: "100%" }}
       animate={{ y: 0 }}
@@ -59,19 +60,18 @@ export function Hero() {
       {/* --- Optimized Background Layer --- */}
       <motion.div
         style={{ y: backgroundY }}
-        className="absolute inset-0 z-0 will-change-transform" // HINT FOR GPU
+        className="absolute inset-0 z-0 will-change-transform"
       >
         <Image
           src="/hero-bg.avif"
           alt="Luxury interior"
           fill
           priority
-          quality={85} // Reduced from 100 (unnoticeable diff, huge perf gain)
+          quality={85}
           sizes="100vw"
           className="object-cover scale-105"
         />
 
-        {/* Simplified Overlay: Single gradient instead of multiple divs */}
         <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-black/30" />
       </motion.div>
 
@@ -92,7 +92,6 @@ export function Hero() {
             <RevealText delay={0.2} className="py-2">
               <h2 className="text-xl md:text-4xl font-light tracking-wide flex flex-wrap items-center gap-x-3">
                 <span className="text-neutral-500">Architecting</span>
-                {/* Static Gold Gradient (No expensive animation) */}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-200 via-yellow-100 to-amber-300 italic font-serif">
                   Intelligent Systems
                 </span>
@@ -108,7 +107,6 @@ export function Hero() {
             className="max-w-xl"
           >
             <div className="flex gap-4 items-start pl-1">
-              {/* CSS Line instead of div */}
               <div className="w-px h-12 bg-neutral-700 mt-1 hidden md:block" />
               <p className="text-sm md:text-base font-mono text-neutral-400 leading-relaxed">
                 AI automation infrastructure & enterprise workflow
@@ -125,19 +123,27 @@ export function Hero() {
             transition={{ delay: 1, duration: 0.8 }}
             className="flex flex-wrap gap-4 pt-6"
           >
-            <Link
+            <TrackedLink
               href="#communication"
+              tracking={{
+                name: "hero_cta_click",
+                params: {
+                  location: "hero",
+                  cta: "Initiate Project",
+                  target: "#communication",
+                },
+              }}
               className="px-8 py-3 bg-neutral-100 text-black font-mono text-xs md:text-sm uppercase tracking-wider font-bold hover:bg-white transition-colors"
             >
               Initiate Project
-            </Link>
+            </TrackedLink>
 
-            <Link
+            <TrackedLink
               href="#digital-automation"
               className="px-8 py-3 border border-white/10 text-neutral-300 font-mono text-xs md:text-sm uppercase tracking-wider hover:bg-white/5 hover:text-white transition-colors"
             >
               System Logs
-            </Link>
+            </TrackedLink>
           </motion.div>
         </motion.div>
       </div>

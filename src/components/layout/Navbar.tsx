@@ -1,3 +1,4 @@
+// src/components/layout/Navbar.tsx
 "use client";
 
 import Link from "next/link";
@@ -6,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
+import { TrackedLink } from "@/components/TrackedLink";
 
 const navItems = [
   { name: "Experience", href: "#professional-experience" },
@@ -38,9 +40,7 @@ export function Navbar() {
             : "rounded-full w-fit items-center flex px-2 py-2",
         )}
       >
-        {/* --- Main Content --- */}
         <div className="flex items-center justify-between w-full">
-          {/* Logo */}
           <Link
             href="/"
             className="group flex items-center gap-1 text-sm font-medium tracking-tighter text-white z-20 pl-4 pr-6"
@@ -51,7 +51,6 @@ export function Navbar() {
             <span className="font-serif italic text-neutral-200">Khan.</span>
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1 bg-white/3 rounded-full p-1 border border-white/5">
             {navItems.map((item) => (
               <Link
@@ -78,9 +77,13 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <Link
+          {/* Desktop CTA (Booking click tracking) */}
+          <TrackedLink
             href="/booking"
+            tracking={{
+              name: "booking_click",
+              params: { location: "navbar_desktop", label: "Inquire" },
+            }}
             className="hidden md:flex items-center gap-2 ml-6 bg-white hover:bg-neutral-200 text-black text-[11px] font-bold uppercase tracking-[0.15em] px-6 py-2.5 rounded-full transition-all group"
           >
             Inquire
@@ -88,9 +91,8 @@ export function Navbar() {
               className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"
               strokeWidth={3}
             />
-          </Link>
+          </TrackedLink>
 
-          {/* Mobile Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-neutral-400 hover:text-white transition-colors z-20"
@@ -99,7 +101,6 @@ export function Navbar() {
           </button>
         </div>
 
-        {/* --- Mobile Menu --- */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
@@ -133,13 +134,21 @@ export function Navbar() {
                   transition={{ delay: 0.2 }}
                   className="mt-4 px-2"
                 >
-                  <Link
+                  {/* Mobile CTA (Booking click tracking) */}
+                  <TrackedLink
                     href="/booking"
+                    tracking={{
+                      name: "booking_click",
+                      params: {
+                        location: "navbar_mobile",
+                        label: "Start a Project",
+                      },
+                    }}
                     onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center justify-center gap-3 w-full bg-white text-black text-xs font-bold uppercase tracking-widest py-5 rounded-2xl shadow-xl active:scale-[0.98] transition-transform"
                   >
                     Start a Project
-                  </Link>
+                  </TrackedLink>
                 </motion.div>
               </div>
             </motion.div>
