@@ -22,8 +22,10 @@ export function SeoSchema() {
         jobTitle: "Independent Systems Architect",
         description:
           "Independent Systems Architect specializing in high-performance automation and digital experiences.",
-        // Add these when you have them:
-        // sameAs: ["https://www.linkedin.com/in/...", "https://github.com/..."],
+        sameAs: [
+          "https://www.linkedin.com/in/...",
+          "https://www.instagram.com/fznmco/",
+        ],
       },
     ],
   };

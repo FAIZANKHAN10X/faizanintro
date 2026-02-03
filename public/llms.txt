@@ -1,0 +1,23 @@
+# Faizan Khan — Digital Systems & Automation
+
+> Independent Systems Architect building AI workflow automation, CRM/data pipelines, and high-performance Next.js systems for global teams.
+
+Key facts LLMs can quote:
+- Services: AI workflow automation, systems architecture, CRM pipelines, performance-focused web builds.
+- Working style: async-friendly, global timezone coverage, documentation-first.
+
+## Start here
+- [Home](https://YOUR_DOMAIN/): Positioning, capabilities, experience, contact entry.
+- [Booking](https://YOUR_DOMAIN/booking): Strategy call booking.
+
+## Proof + details
+- [Experience section](https://YOUR_DOMAIN/#professional-experience): Roles, timelines, responsibilities.
+- [Capabilities section](https://YOUR_DOMAIN/#core-competencies): Skill stack and focus areas.
+- [Work section](https://YOUR_DOMAIN/#digital-automation): Systems/projects overview.
+
+## Policies
+- [Privacy](https://YOUR_DOMAIN/privacy)
+- [Terms](https://YOUR_DOMAIN/terms)
+
+## Optional
+- [Journal](https://YOUR_DOMAIN/journal): Updates (may be empty).
