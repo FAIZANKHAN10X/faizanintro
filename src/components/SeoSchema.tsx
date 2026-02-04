@@ -1,8 +1,6 @@
-export function SeoSchema() {
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    "https://faizanintroduction.netlify.app";
+import { siteUrl } from "@/lib/site";
 
+export function SeoSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -32,7 +30,6 @@ export function SeoSchema() {
     ],
   };
 
-  // Prevent '</script>' injection edge cases
   const json = JSON.stringify(schema).replace(/</g, "\\u003c");
 
   return (

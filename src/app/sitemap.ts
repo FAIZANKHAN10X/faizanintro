@@ -1,9 +1,7 @@
 import type { MetadataRoute } from "next";
 import fs from "fs";
 import path from "path";
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://faizanintroduction.netlify.app";
+import { siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();

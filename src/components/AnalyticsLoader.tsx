@@ -1,20 +1,20 @@
-// src/components/AnalyticsLoader.tsx
 "use client";
 
 import Script from "next/script";
 import { useConsent } from "@/context/ConsentContext";
 
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+
 export function AnalyticsLoader() {
   const { consent } = useConsent();
 
-  // This ensures tracking only happens if the user clicks "Accept" on your banner
   if (consent !== "accepted") return null;
+  if (!GA_ID) return null; // Prevent crash if env missing
 
   return (
     <>
-      {/* Global Site Tag (gtag.js) - Google Analytics */}
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-E5LFB909SR"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
         strategy="afterInteractive"
       />
       <Script id="google-analytics" strategy="afterInteractive">
@@ -23,7 +23,7 @@ export function AnalyticsLoader() {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'G-E5LFB909SR', {
+          gtag('config', '${GA_ID}', {
             page_path: window.location.pathname,
           });
         `}

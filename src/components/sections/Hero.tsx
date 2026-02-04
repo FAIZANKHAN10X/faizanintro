@@ -76,7 +76,7 @@ export function Hero() {
       </motion.div>
 
       {/* --- Main Content --- */}
-      <div className="relative z-10 w-full max-w-350 px-6 md:px-12 mx-auto">
+      <div className="relative z-10 w-full max-w-7xl px-6 md:px-12 mx-auto">
         <motion.div
           style={{ y: textY }}
           className="max-w-5xl space-y-6 will-change-transform"

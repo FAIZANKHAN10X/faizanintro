@@ -6,9 +6,7 @@ import { CookieBanner } from "@/components/layout/CookieBanner";
 import { AnalyticsLoader } from "@/components/AnalyticsLoader";
 import { ConsentProvider } from "@/context/ConsentContext";
 import { SeoSchema } from "@/components/SeoSchema";
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://faizanintroduction.netlify.app";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -19,11 +17,11 @@ export const metadata: Metadata = {
   description:
     "Digital systems, automation, operations, and AI workflow implementation.",
   alternates: {
-    canonical: "/",
+    canonical: siteUrl,
   },
   openGraph: {
     type: "website",
-    url: "/",
+    url: siteUrl,
     siteName: "Faizan",
     title: "Faizan | Digital Systems & Automation",
     description:

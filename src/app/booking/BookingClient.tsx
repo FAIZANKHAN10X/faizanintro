@@ -46,7 +46,7 @@ export default function BookingClient() {
 
       {/* Cal Embed */}
       <div className="grow px-6 pb-16">
-        <div className="max-w-5xl mx-auto border border-neutral-800 rounded-xl p-4 h-200">
+        <div className="max-w-5xl mx-auto border border-neutral-800 rounded-xl p-4 min-h-175">
           <Cal
             namespace="default"
             calLink="faizan-khan/strategy"
