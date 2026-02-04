@@ -8,20 +8,23 @@ export function SeoSchema() {
         "@type": "WebSite",
         "@id": `${siteUrl}/#website`,
         url: siteUrl,
-        name: "Faizan | Digital Systems & Automation",
+        name: "Faizan Khan",
         description:
-          "Digital systems, automation, operations, and AI workflow implementation.",
-        inLanguage: "en",
-        publisher: { "@id": `${siteUrl}/#person` },
+          "AI automation systems, workflow infrastructure, CRM architecture, and operational scaling.",
+        potentialAction: {
+          "@type": "SearchAction",
+          target: `${siteUrl}/journal?query={search_term_string}`,
+          "query-input": "required name=search_term_string",
+        },
       },
       {
         "@type": "Person",
         "@id": `${siteUrl}/#person`,
         name: "Faizan Khan",
         url: siteUrl,
-        jobTitle: "Independent Systems Architect",
+        jobTitle: "AI Automation & Systems Architect",
         description:
-          "Independent Systems Architect specializing in high-performance automation and digital experiences.",
+          "Independent systems architect specializing in AI workflow automation and scalable operational infrastructure.",
         sameAs: [
           "https://www.linkedin.com/in/...",
           "https://www.instagram.com/fznmco/",

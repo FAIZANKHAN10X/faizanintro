@@ -10,34 +10,52 @@ import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+
   title: {
-    default: "Faizan | Digital Systems & Automation",
-    template: "%s | Faizan",
+    default: "Faizan Khan | AI Automation & Systems Architect",
+    template: "%s | Faizan Khan",
   },
+
   description:
-    "Digital systems, automation, operations, and AI workflow implementation.",
+    "AI automation systems, workflow infrastructure, CRM architecture, and operational scaling for modern businesses.",
+
+  keywords: [
+    "AI Automation",
+    "Systems Architect",
+    "Workflow Automation",
+    "CRM Architecture",
+    "Operational Scaling",
+    "n8n Automation",
+    "Next.js Systems",
+  ],
+
   alternates: {
-    canonical: siteUrl,
+    canonical: "/",
   },
+
   openGraph: {
     type: "website",
     url: siteUrl,
-    siteName: "Faizan",
-    title: "Faizan | Digital Systems & Automation",
+    siteName: "Faizan Khan",
+    title: "Faizan Khan | AI Automation & Systems Architect",
     description:
-      "Digital systems, automation, operations, and AI workflow implementation.",
-    locale: "en_US",
+      "AI automation systems, workflow infrastructure, CRM architecture, and operational scaling for modern businesses.",
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Faizan | Digital Systems & Automation",
+    title: "Faizan Khan | AI Automation & Systems Architect",
     description:
-      "Digital systems, automation, operations, and AI workflow implementation.",
+      "AI automation systems, workflow infrastructure, CRM architecture, and operational scaling for modern businesses.",
   },
+
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true },
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 };
 
