@@ -7,7 +7,8 @@ import { AnalyticsLoader } from "@/components/AnalyticsLoader";
 import { ConsentProvider } from "@/context/ConsentContext";
 import { SeoSchema } from "@/components/SeoSchema";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://faizanintroduction.netlify.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

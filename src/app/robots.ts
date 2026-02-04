@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://faizanintroduction.netlify.app";
 
 const isProduction =
   process.env.VERCEL_ENV === "production" ||
