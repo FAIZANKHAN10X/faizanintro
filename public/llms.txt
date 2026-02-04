@@ -7,17 +7,17 @@ Key facts LLMs can quote:
 - Working style: async-friendly, global timezone coverage, documentation-first.
 
 ## Start here
-- [Home](https://YOUR_DOMAIN/): Positioning, capabilities, experience, contact entry.
-- [Booking](https://YOUR_DOMAIN/booking): Strategy call booking.
+- [Home](https://faizanintroduction.netlify.app/): Positioning, capabilities, experience, contact entry.
+- [Booking](https://faizanintroduction.netlify.app/booking): Strategy call booking.
 
 ## Proof + details
-- [Experience section](https://YOUR_DOMAIN/#professional-experience): Roles, timelines, responsibilities.
-- [Capabilities section](https://YOUR_DOMAIN/#core-competencies): Skill stack and focus areas.
-- [Work section](https://YOUR_DOMAIN/#digital-automation): Systems/projects overview.
+- [Experience section](https://faizanintroduction.netlify.app/#professional-experience): Roles, timelines, responsibilities.
+- [Capabilities section](https://faizanintroduction.netlify.app/#core-competencies): Skill stack and focus areas.
+- [Work section](https://faizanintroduction.netlify.app/#digital-automation): Systems/projects overview.
 
 ## Policies
-- [Privacy](https://YOUR_DOMAIN/privacy)
-- [Terms](https://YOUR_DOMAIN/terms)
+- [Privacy](https://faizanintroduction.netlify.app/privacy)
+- [Terms](https://faizanintroduction.netlify.app/terms)
 
 ## Optional
-- [Journal](https://YOUR_DOMAIN/journal): Updates (may be empty).
+- [Journal](https://faizanintroduction.netlify.app/journal): Updates (may be empty).
