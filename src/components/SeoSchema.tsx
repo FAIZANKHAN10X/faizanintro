@@ -26,7 +26,7 @@ export function SeoSchema() {
         description:
           "Independent systems architect specializing in AI workflow automation and scalable operational infrastructure.",
         sameAs: [
-          "https://www.linkedin.com/in/...",
+          "https://www.linkedin.com/in/faizankhan10x",
           "https://www.instagram.com/fznmco/",
         ],
       },

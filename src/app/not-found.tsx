@@ -1,96 +1,87 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { motion, animate, useMotionValue, useTransform } from "framer-motion";
+import { useEffect } from "react";
 
 export default function NotFound() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const countRef = useRef<HTMLSpanElement>(null);
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) =>
+    Math.floor(latest).toString().padStart(3, "0"),
+  );
 
   useEffect(() => {
-    // Fixed: Using 'const' instead of 'let' to satisfy ESLint prefer-const
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    const controls = animate(count, 404, {
+      duration: 2,
+      ease: "easeOut",
+    });
 
-      // 1. Divider Line expands first
-      tl.fromTo(
-        ".border-line",
-        { scaleX: 0 },
-        { scaleX: 1, duration: 1.2, ease: "expo.inOut" },
-      );
-
-      // 2. The Counter (000 -> 404)
-      const countObj = { val: 0 };
-      tl.to(
-        countObj,
-        {
-          val: 404,
-          duration: 2,
-          ease: "expo.out",
-          onUpdate: () => {
-            if (countRef.current) {
-              countRef.current.innerText = Math.floor(countObj.val)
-                .toString()
-                .padStart(3, "0");
-            }
-          },
-        },
-        "-=0.5",
-      );
-
-      // 3. Staggered Text Reveal
-      tl.fromTo(
-        ".reveal",
-        { y: 100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, stagger: 0.1 },
-        "-=1.5",
-      );
-    }, containerRef); // Scope selector to this component
-
-    return () => ctx.revert(); // Cleanup on unmount
-  }, []);
+    return () => controls.stop();
+  }, [count]);
 
   return (
-    <div
-      ref={containerRef}
-      className="min-h-screen bg-[#080808] text-neutral-200 flex flex-col font-sans selection:bg-neutral-800 selection:text-white"
-    >
-      {/* --- Header --- */}
+    <div className="min-h-screen bg-[#080808] text-neutral-200 flex flex-col font-sans selection:bg-neutral-800 selection:text-white">
+      {/* Header */}
       <header className="px-6 py-6 md:px-12 md:py-8 flex justify-between items-start">
-        <div className="reveal opacity-0 text-xs font-mono tracking-widest text-neutral-500">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-xs font-mono tracking-widest text-neutral-500"
+        >
           ERR_PROT_404
-        </div>
-        <div className="reveal opacity-0 text-xs font-mono tracking-widest text-neutral-500">
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-xs font-mono tracking-widest text-neutral-500"
+        >
           SYSTEM_HALTED
-        </div>
+        </motion.div>
       </header>
 
-      {/* --- Main Content --- */}
+      {/* Main */}
       <main className="grow flex flex-col justify-center px-6 md:px-12 relative">
-        {/* The Giant Separator Line */}
-        <div className="border-line w-full h-px bg-neutral-800 origin-left mb-12"></div>
+        {/* Expanding divider line */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          className="w-full h-px bg-neutral-800 origin-left mb-12"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
-          {/* Left: The Message */}
+          {/* Left side */}
           <div className="md:col-span-7 space-y-8">
-            <h1 className="overflow-hidden">
-              <span className="reveal block text-6xl md:text-8xl font-medium tracking-tight leading-[0.95] text-white">
-                Missing <br />
-                <span className="font-serif italic text-neutral-400">
-                  Coordinates.
-                </span>
+            <motion.h1
+              initial={{ opacity: 0, y: 80 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="text-6xl md:text-8xl font-medium tracking-tight leading-[0.95] text-white"
+            >
+              Missing <br />
+              <span className="font-serif italic text-neutral-400">
+                Coordinates.
               </span>
-            </h1>
+            </motion.h1>
 
-            <div className="overflow-hidden">
-              <p className="reveal block text-neutral-500 text-lg md:text-xl font-light max-w-lg leading-relaxed">
-                The requested URL was not found on this server. That’s all we
-                know.
-              </p>
-            </div>
+            <motion.p
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="text-neutral-500 text-lg md:text-xl font-light max-w-lg leading-relaxed"
+            >
+              The requested URL was not found on this server. That’s all we
+              know.
+            </motion.p>
 
-            <div className="reveal pt-4 opacity-0">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+            >
               <Link
                 href="/"
                 className="group inline-flex items-center gap-2 text-sm font-mono uppercase tracking-widest transition-colors hover:text-white text-neutral-400"
@@ -98,40 +89,50 @@ export default function NotFound() {
                 <span className="w-2 h-2 bg-neutral-600 rounded-full group-hover:bg-white transition-colors"></span>
                 Back to Home
               </Link>
-            </div>
+            </motion.div>
           </div>
 
-          {/* Right: The Big Number */}
+          {/* Right side counter */}
           <div className="md:col-span-5 flex flex-col items-start md:items-end justify-end">
-            <div className="relative overflow-hidden">
-              {/* Decorative label next to number */}
-              <span className="reveal absolute top-2 left-0 md:-left-8 -rotate-90 origin-bottom-right text-[10px] font-mono text-neutral-600 tracking-widest">
-                STATUS_CODE
-              </span>
-
-              {/* The Counter */}
-              <span
-                ref={countRef}
-                className="reveal block text-[10rem] md:text-[14rem] leading-[0.8] font-bold tracking-tighter text-white tabular-nums mix-blend-exclusion"
-              >
-                000
-              </span>
-            </div>
+            <motion.span
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.4 }}
+              className="block text-[10rem] md:text-[14rem] leading-[0.8] font-bold tracking-tighter text-white tabular-nums mix-blend-exclusion"
+            >
+              {rounded}
+            </motion.span>
           </div>
         </div>
       </main>
 
-      {/* --- Footer --- */}
+      {/* Footer */}
       <footer className="px-6 py-6 md:px-12 md:py-8">
-        <div className="border-line w-full h-px bg-neutral-800 origin-right mb-4"></div>
-        <div className="flex justify-between items-end">
-          <div className="reveal opacity-0 text-[10px] text-neutral-600 font-mono max-w-50">
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="w-full h-px bg-neutral-800 origin-right mb-4"
+        />
+
+        <div className="flex justify-between items-end text-[10px] text-neutral-600 font-mono">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+            className="max-w-50"
+          >
             The resource you are looking for might have been removed, had its
             name changed, or is temporarily unavailable.
-          </div>
-          <div className="reveal opacity-0 text-[10px] text-neutral-600 font-mono">
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1 }}
+          >
             © {new Date().getFullYear()}
-          </div>
+          </motion.div>
         </div>
       </footer>
     </div>
