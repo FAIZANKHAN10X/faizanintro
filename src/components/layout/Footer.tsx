@@ -149,10 +149,14 @@ export function Footer() {
               Network
             </h4>
             <div className="flex flex-col gap-1">
-              <SocialLink href="#" label="LinkedIn" />
-              <SocialLink href="#" label="GitHub" />
-              <SocialLink href="#" label="Layers" />
-              <SocialLink href="#" label="Email" />
+              <SocialLink
+                href="https://instagram.com/fznmco"
+                label="Instagram"
+              />
+              <SocialLink
+                href="https://linkedin.com/in/faizankhan10x"
+                label="LinkedIn"
+              />
             </div>
           </div>
 
