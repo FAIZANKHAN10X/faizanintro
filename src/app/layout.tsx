@@ -2,11 +2,10 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { CookieBanner } from "@/components/layout/CookieBanner";
 import { AnalyticsLoader } from "@/components/AnalyticsLoader";
-import { ConsentProvider } from "@/context/ConsentContext";
 import { SeoSchema } from "@/components/SeoSchema";
 import { siteUrl } from "@/lib/site";
+import { WebVitals } from "@/components/WebVitals";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -68,13 +67,11 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-neutral-950 text-neutral-100 antialiased">
         <SeoSchema />
-        <ConsentProvider>
-          <Navbar />
-          <main className="scroll-smooth">{children}</main>
-          <Footer />
-          <CookieBanner />
-          <AnalyticsLoader />
-        </ConsentProvider>
+        <Navbar />
+        <main className="scroll-smooth">{children}</main>
+        <Footer />
+        <AnalyticsLoader />
+        <WebVitals />
       </body>
     </html>
   );

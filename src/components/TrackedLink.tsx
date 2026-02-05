@@ -1,9 +1,7 @@
-// src/components/TrackedLink.tsx
 "use client";
 
 import Link from "next/link";
 import React from "react";
-import { useConsent } from "@/context/ConsentContext";
 import { trackEvent, type AnalyticsEventName } from "@/lib/analytics";
 
 type TrackedLinkProps = Omit<React.ComponentProps<typeof Link>, "onClick"> & {
@@ -20,13 +18,10 @@ export function TrackedLink({
   href,
   ...props
 }: TrackedLinkProps) {
-  const { consent } = useConsent();
-
   const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
     onClick?.(e);
     if (e.defaultPrevented) return;
 
-    if (consent !== "accepted") return;
     if (!tracking) return;
 
     trackEvent(tracking.name, {

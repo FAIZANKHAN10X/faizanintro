@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { ArrowUpRight, Command } from "lucide-react";
 import { TrackedLink } from "@/components/TrackedLink";
-import { useConsent } from "@/context/ConsentContext";
 
 // --- Utility: Live Clock (Optimized) ---
 const TimeDisplay = () => {
@@ -50,8 +49,6 @@ const SocialLink = ({ href, label }: { href: string; label: string }) => (
 );
 
 export function Footer() {
-  const { openCookieSettings } = useConsent();
-
   return (
     <footer className="bg-black pt-32 pb-12 overflow-hidden relative border-t border-neutral-900">
       <div className="absolute inset-0 opacity-[0.15] pointer-events-none mask-[radial-gradient(ellipse_at_center,black,transparent)]">
@@ -203,16 +200,6 @@ export function Footer() {
             >
               Terms
             </Link>
-
-            {/* Cookie settings re-open trigger */}
-            <button
-              type="button"
-              onClick={openCookieSettings}
-              className="hover:text-neutral-100 transition-colors"
-            >
-              Cookie Settings
-            </button>
-
             <button
               type="button"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
