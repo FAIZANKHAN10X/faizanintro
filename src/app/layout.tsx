@@ -1,8 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { AnalyticsLoader } from "@/components/AnalyticsLoader";
 import { SeoSchema } from "@/components/SeoSchema";
 import { siteUrl } from "@/lib/site";
 import { WebVitals } from "@/components/WebVitals";
@@ -17,45 +17,6 @@ export const metadata: Metadata = {
 
   description:
     "AI automation systems, workflow infrastructure, CRM architecture, and operational scaling for modern businesses.",
-
-  keywords: [
-    "AI Automation",
-    "Systems Architect",
-    "Workflow Automation",
-    "CRM Architecture",
-    "Operational Scaling",
-    "n8n Automation",
-    "Next.js Systems",
-  ],
-
-  alternates: {
-    canonical: "/",
-  },
-
-  openGraph: {
-    type: "website",
-    url: siteUrl,
-    siteName: "Faizan Khan",
-    title: "Faizan Khan | AI Automation & Systems Architect",
-    description:
-      "AI automation systems, workflow infrastructure, CRM architecture, and operational scaling for modern businesses.",
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "Faizan Khan | AI Automation & Systems Architect",
-    description:
-      "AI automation systems, workflow infrastructure, CRM architecture, and operational scaling for modern businesses.",
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
-  },
 };
 
 export default function RootLayout({
@@ -65,12 +26,40 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          id="gtm-script"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];
+              w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+              var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+              j.async=true;
+              j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+              f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-MF6JRFFX');
+            `,
+          }}
+        />
+      </head>
+
       <body className="bg-neutral-950 text-neutral-100 antialiased">
+        {/* GTM noscript fallback */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MF6JRFX"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+
         <SeoSchema />
         <Navbar />
-        <main className="scroll-smooth">{children}</main>
+        <main>{children}</main>
         <Footer />
-        <AnalyticsLoader />
         <WebVitals />
       </body>
     </html>
